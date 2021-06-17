@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="container">
+        <pre id="json-renderer"></pre>
+    </div>
+</body>
+<script type="text/javascript" src="/webjars/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="/js/common/jquery.json-viewer..js"></script>
+<link rel="stylesheet" href="/css/jquery.json-viewer.css">
+<script th:inline="javascript">
+/*<![CDATA[*/
+    var order = /*[[${order}]]*/ null;
+    $("#json-renderer").jsonViewer(JSON.parse(order));
+/*]]>*/
+</script>
+</html>

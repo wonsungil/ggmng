@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="container">
+        <h3>광고 주문 리스트</h3>
+        <hr>
+        <div>
+            <table id="orderListTable" class="table">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>광고항목</th>
+                        <th>광고주</th>
+                        <th>시작시간</th>
+                        <th>종료시간</th>
+                        <th>전체예상가치</th>
+                        <th>노출수</th>
+                        <th>클릭수</th>
+                        <th>게재된 조회 가능 노출</th>
+                        <th>메모</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="order : ${orders}">
+                        <td>
+                            <a th:href="@{'/view/order/'+${order.order.id}}" th:text="${order.order.name}+'('+${order.order.id}+')'"></a>
+                        </td>
+                        <td th:text="${order.order.status}"></td>
+                        <td th:text="${order.advertiser.name}"></td>
+                        <td th:text="${order.order.startDateTime.date}"></td>
+                        <td th:text="${order.order.endDateTime.date}"></td>
+                        <td th:text="${order.order.name}"></td>
+                        <td th:text="${order.order.totalViewableImpressionsDelivered}"></td>
+                        <td th:text="${order.order.totalClicksDelivered}"></td>
+                        <td th:text="${order.order.totalBudget}"></td>
+                        <td th:text="${order.order.notes}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css">
+<script type="text/javascript" src="/webjars/jquery/2.2.4/jquery.min.js"></script>
+<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/order/list.js"></script>
+</html>
